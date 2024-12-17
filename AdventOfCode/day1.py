@@ -1,6 +1,6 @@
-""" Advent of Code Day 1 """
+""" Advent of Code 2023 Day 1 """
 
-import os
+from AdventOfCode import utilities
 
 
 def build_lists(input_file: str) -> tuple:
@@ -8,13 +8,10 @@ def build_lists(input_file: str) -> tuple:
     left = []
     right = []
 
-    input_file = os.path.join(os.getcwd(), "inputs", input_file)
+    for int_line in utilities.get_int_lines(input_file):
+        left.append(int_line[0])
+        right.append(int_line[1])
 
-    with open(input_file, "r", encoding="utf-8") as file:
-        for line in file:
-            a, b = map(int, line.split())
-            left.append(a)
-            right.append(b)
     return left, right
 
 

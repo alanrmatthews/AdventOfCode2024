@@ -2,7 +2,7 @@
 
 import unittest
 import os
-from src import day1
+from AdventOfCode import day1
 
 inputs_dir = os.path.join(os.getcwd(), "inputs", "day1")
 
