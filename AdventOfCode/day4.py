@@ -1,5 +1,7 @@
 """ Advent of Code 2024 Day 2 """
 
+from AdventOfCode.utilities import get_character_lines
+
 
 def check_direction(grid, x_in: int, y_in: int, direction: tuple, keyword: str) -> bool:
     """Follow the direction in the grid to see if we can match the word."""
@@ -18,12 +20,6 @@ def check_direction(grid, x_in: int, y_in: int, direction: tuple, keyword: str) 
         return check_direction(grid, x, y, direction, keyword[1:])
 
     return False
-
-
-def get_character_lines(input_file: str) -> list[list[chr]]:
-    """Read the file at the given path and return a list of characters for each line in the file."""
-    with open(input_file, encoding="utf-8") as file:
-        return [list(line.strip()) for line in file]
 
 
 def check_corners(grid, x: int, y: int) -> bool:
