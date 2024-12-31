@@ -1,18 +1,19 @@
 """ Advent of Code 2024 Day 2 """
 
 import math
-from AdventOfCode.utilities import get_int_lines
+from AdventOfCode.day_base import AdventOfCodeDay
 
 
-class Day11:
+class Solver(AdventOfCodeDay):
     """Advent of Code 2024 Day 10 solution."""
 
     def __init__(self, input_file: str):
         # Only one line so we can just work with the first one.
-        g = get_int_lines(input_file)
+        g = self.get_int_lines(input_file)
         self.stones = next(g)
         self.total_blinks = 0
         self.blink_history = {}
+        super().__init__(input_file)
 
     def part1(self) -> int:
         """Returns the solution for part 1 of the day."""
@@ -48,6 +49,7 @@ class Day11:
         return self.blink_history[stone][blinks_left]
 
     def blink(self):
+        """Blink the stones."""
         self.total_blinks += 1
         print(f"Total blinks: {self.total_blinks}")
         new_stones = []

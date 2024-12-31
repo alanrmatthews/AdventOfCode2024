@@ -1,13 +1,14 @@
 """ Advent of Code 2024 Day 2 """
 
-from AdventOfCode.utilities import get_character_lines_and_elements
+from AdventOfCode.day_base import AdventOfCodeDay
 
 
-class Day10:
+class Solver(AdventOfCodeDay):
     """Advent of Code 2024 Day 10 solution."""
 
     def __init__(self, input_file: str):
-        self.lines, self.elements = get_character_lines_and_elements(input_file, r"\d")
+        super().__init__(input_file)
+        self.lines, self.elements = self.get_character_lines_and_elements(r"\d")
         self.all_trails = {}
         self.directions = {(0, 1), (1, 0), (0, -1), (-1, 0)}
         self.ascending = "0123456789"
@@ -24,7 +25,7 @@ class Day10:
         """Returns the solution for part 2 of the day."""
         return sum(len(self.get_trail_score(head, 0)) for head in self.elements["0"])
 
-    def in_bounds(self, pos: tuple[int, int]) -> bool:
+    def is_in_bounds(self, pos: tuple[int, int]) -> bool:
         """Returns True if the tuple is in bounds of the grid."""
         return 0 <= pos[0] < len(self.lines) and 0 <= pos[1] < len(self.lines[0])
 
@@ -41,7 +42,7 @@ class Day10:
 
         for direction in self.directions:
             next_pos = (head[0] + direction[0], head[1] + direction[1])
-            if not self.in_bounds(next_pos):
+            if not self.is_in_bounds(next_pos):
                 continue
 
             if self.lines[next_pos[0]][next_pos[1]] == self.ascending[level + 1]:
